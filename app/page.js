@@ -9,17 +9,24 @@ import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import RulesModal from "@/app/UI/RulesModal";
 import { useRouter } from "next/navigation";
+import { resetScore } from "@/app/redux/slices/gameSlice";
+import { useDispatch } from "react-redux";
 
 export default function Home() {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
+  const resetScoreHandler = () => {
+    dispatch(resetScore());
+    router.push("/");
+  };
+
   const goToGame = (pick) => {
-    console.log(pick);
     router.push(`/pages/${pick}`);
   };
 
@@ -84,12 +91,21 @@ export default function Home() {
         </div>
       </div>
 
-      <button
-        className="border-2 border-darkText rounded-lg py-2 px-10 text-white uppercase tracking-wider font-semibold"
-        onClick={toggleModal}
-      >
-        Rules
-      </button>
+      <div className="flex flex-col gap-y-2">
+        <button
+          className="border-2 border-darkText rounded-lg py-2 px-10 text-white uppercase tracking-wider font-semibold"
+          onClick={toggleModal}
+        >
+          Rules
+        </button>
+
+        <button
+          className="border-2 border-darkText rounded-lg py-2 px-10 text-white uppercase tracking-wider font-semibold"
+          onClick={resetScoreHandler}
+        >
+          Reset Score
+        </button>
+      </div>
 
       <AnimatePresence>
         {showModal && <RulesModal click={toggleModal} />}

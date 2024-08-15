@@ -7,15 +7,33 @@ import scissors from "@/public/images/icon-scissors.svg";
 
 import RulesModal from "@/app/UI/RulesModal";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
-// import { useSelector, useDispatch } from "react-redux";
-// import { setPick } from "@/app/redux/slices/gameSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { incrementScore } from "@/app/redux/slices/gameSlice";
 
 export default function Game({ playerPick }) {
   const [showModal, setShowModal] = useState(false);
-  //   const dispatch = useDispatch();
-  //   const pick = useSelector((state) => state.game.pick);
+  const [computerPick, setComputerPick] = useState(null);
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const pick = useSelector((state) => state.game.pick);
+
+  useEffect(() => {
+    const randomPick = pick[Math.floor(Math.random() * pick.length)];
+    setComputerPick(randomPick);
+  }, [pick]);
+
+  useEffect(() => {
+    if (
+      (playerPick === "rock" && computerPick === "scissors") ||
+      (playerPick === "paper" && computerPick === "rock") ||
+      (playerPick === "scissors" && computerPick === "paper")
+    ) {
+      dispatch(incrementScore());
+    }
+  }, [playerPick, computerPick, dispatch]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -64,11 +82,30 @@ export default function Game({ playerPick }) {
         {/* COMPUTER */}
         <div className="flex flex-col items-center gap-y-5">
           <div
-            className={`bg-white border-[12px] border-paperColor rounded-full h-[120px] w-[120px] flex items-center justify-center
-          shadow-[inset_0px_5px_1px_rgba(0,0,0,.1),0px_6px_0px_hsl(230,89%,62%)]`}
+            className={`bg-white border-[12px] rounded-full h-[120px] w-[120px] flex items-center justify-center
+            border-${
+              computerPick === "rock"
+                ? "rockColor"
+                : computerPick === "paper"
+                ? "paperColor"
+                : "scissorsColor"
+            }  
+          shadow-[inset_0px_5px_1px_rgba(0,0,0,.1),0px_6px_0px_${
+            computerPick === "rock"
+              ? "hsl(349,71%,52%)"
+              : computerPick === "paper"
+              ? "hsl(230,89%,62%)"
+              : "hsl(39,89%,49%)"
+          }]`}
           >
             <Image
-              src={paper}
+              src={
+                computerPick === "rock"
+                  ? rock
+                  : computerPick === "paper"
+                  ? paper
+                  : scissors
+              }
               alt="image of triangle"
               width={0}
               height={0}
@@ -78,6 +115,30 @@ export default function Game({ playerPick }) {
 
           <p className="uppercase text-white font-semibold">The House Picked</p>
         </div>
+      </div>
+
+      {/* PLAY AGAIN */}
+      <div className="flex flex-col gap-y-5">
+        <p className="uppercase font-bold text-6xl text-white tracking-wide">
+          {playerPick === computerPick
+            ? "It's a tie"
+            : playerPick === "rock" && computerPick === "scissors"
+            ? "You Win"
+            : playerPick === "paper" && computerPick === "rock"
+            ? "You Win"
+            : playerPick === "scissors" && computerPick === "paper"
+            ? "You Win"
+            : "You Lose"}
+        </p>
+
+        <button
+          className="bg-white text-darkText uppercase tracking-widest rounded-lg py-2 px-10"
+          onClick={() => {
+            router.push("/");
+          }}
+        >
+          Play Again
+        </button>
       </div>
 
       {/* BUTTON & MODAL */}

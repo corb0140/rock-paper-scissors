@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 export default function Header() {
   const score = useSelector((state) => state.game.score);
+
   return (
     <header className="h-auto p-4">
       <div className="h-auto border-4 border-headerOutline rounded-lg p-5 flex justify-between">
