@@ -36,7 +36,8 @@ export default function Home() {
         {/* PAPER SCISSORS */}
         <div className="flex justify-between w-full absolute top-0 left-0 z-10">
           <div
-            className="lg:absolute lg:-right-5 lg:-top-10 bg-white border-[12px] lg:border-[15px] border-paperColor rounded-full h-[180px] w-[180px] 
+            className="lg:absolute lg:-right-5 lg:-top-10 bg-white border-[12px] lg:border-[15px] border-paperColor rounded-full 
+            h-[120px] w-[120px] lg:h-[180px] lg:w-[180px] 
             flex items-center justify-center shadow-[inset_0px_5px_1px_rgba(0,0,0,.1),0px_6px_0px_hsl(230,89%,62%)]"
             onClick={() => goToGame("paper")}
           >
@@ -50,7 +51,8 @@ export default function Home() {
           </div>
 
           <div
-            className="lg:absolute lg:-left-5 lg:-top-10 bg-white border-[12px] lg:border-[15px] border-scissorsColor rounded-full h-[180px] w-[180px] 
+            className="lg:absolute lg:-left-5 lg:-top-10 bg-white border-[12px] lg:border-[15px] border-scissorsColor rounded-full 
+            h-[120px] w-[120px] lg:h-[180px] lg:w-[180px] 
             flex items-center justify-center shadow-[inset_0px_5px_1px_rgba(0,0,0,.1),0px_6px_0px_hsl(39,89%,49%)]"
             onClick={() => goToGame("scissors")}
           >
@@ -76,8 +78,9 @@ export default function Home() {
         {/* ROCK */}
         <div className="absolute bottom-0 w-full flex items-center justify-center">
           <div
-            className="bg-white border-[12px] lg:border-[15px] border-rockColor rounded-full h-[180px] w-[180px] flex items-center justify-center
-          shadow-[inset_0px_5px_1px_rgba(0,0,0,.1),0px_6px_0px_hsl(349,71%,52%)]"
+            className="bg-white border-[12px] lg:border-[15px] border-rockColor rounded-full 
+            h-[120px] w-[120px] lg:h-[180px] lg:w-[180px] 
+            flex items-center justify-center shadow-[inset_0px_5px_1px_rgba(0,0,0,.1),0px_6px_0px_hsl(349,71%,52%)]"
             onClick={() => goToGame("rock")}
           >
             <Image

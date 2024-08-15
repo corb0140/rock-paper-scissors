@@ -40,12 +40,13 @@ export default function Game({ playerPick }) {
   };
 
   return (
-    <div className="p-5 h-[600px] w-full flex flex-col items-center justify-around">
-      <div className="w-full h-auto p-2 flex justify-between">
+    <div className="p-5 lg:px-96 h-[600px] lg:h-[550px] w-full flex flex-col items-center justify-around">
+      <div className="w-full h-auto p-2 lg:p-5 flex justify-between">
         {/* PLAYER */}
         <div className="flex flex-col items-center gap-y-5">
           <div
-            className={`bg-white rounded-full h-[120px] w-[120px] flex items-center justify-center border-[12px] 
+            className={`bg-white rounded-full h-[120px] w-[120px] lg:h-[180px] lg:w-[180px] flex items-center justify-center 
+            border-[12px] lg:border-[15px]
             border-${
               playerPick === "rock"
                 ? "rockColor"
@@ -82,7 +83,8 @@ export default function Game({ playerPick }) {
         {/* COMPUTER */}
         <div className="flex flex-col items-center gap-y-5">
           <div
-            className={`bg-white border-[12px] rounded-full h-[120px] w-[120px] flex items-center justify-center
+            className={`bg-white rounded-full h-[120px] w-[120px] lg:h-[180px] lg:w-[180px] flex items-center justify-center
+            border-[12px] lg:border-[15px]
             border-${
               computerPick === "rock"
                 ? "rockColor"

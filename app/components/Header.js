@@ -7,7 +7,7 @@ export default function Header() {
 
   return (
     <header className="h-auto p-4 lg:px-[25rem]">
-      <div className="h-auto border-4 border-headerOutline rounded-lg p-5 lg:p-10 flex justify-between">
+      <div className="h-auto border-4 border-headerOutline rounded-lg p-5 lg:p-7 flex justify-between">
         {/* ROCK, PAPER, SCISSORS */}
         <div className="flex flex-col h-[4.5rem] lg:h-[6.5rem]">
           <h1 className="uppercase font-bold text-2xl lg:text-4xl leading-5 text-white">
