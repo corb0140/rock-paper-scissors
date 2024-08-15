@@ -1,4 +1,5 @@
 import "./globals.css";
+import StoreProvider from "./redux/StoreProvider";
 
 export const metadata = {
   title: "Rock, Paper, Scissors",
@@ -8,7 +9,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="font-Barlow">{children}</body>
+      <body className="font-Barlow">
+        <StoreProvider>{children}</StoreProvider>
+      </body>
     </html>
   );
 }
