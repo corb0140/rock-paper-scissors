@@ -4,7 +4,7 @@ const initialState = {
   score: 0,
   isPlaying: false,
   isGameOver: false,
-  pick: null,
+  pick: ["rock", "paper", "scissors"],
 };
 
 const gameSlice = createSlice({
@@ -17,9 +17,9 @@ const gameSlice = createSlice({
     endGame(state) {
       state.isPlaying = false;
     },
-    setPick(state, action) {
-      state.pick = action.payload;
-    },
+    // setPick(state, action) {
+    //   state.pick = action.payload;
+    // },
     incrementScore(state) {
       state.score += 1;
     },
@@ -40,7 +40,7 @@ const gameSlice = createSlice({
 export const {
   startGame,
   endGame,
-  setPick,
+  // setPick,
   incrementScore,
   resetScore,
   restartGame,

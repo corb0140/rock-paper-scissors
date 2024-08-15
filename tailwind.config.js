@@ -12,9 +12,12 @@ module.exports = {
       },
       colors: {
         // Primary
-        scissorsGradient: `linear-gradient(to right, hsl(39, 89%, 49%), hsl(40, 84%, 53%))`,
-        paperGradient: `linear-gradient(to right, hsl(230, 89%, 62%), hsl(230, 89%, 65%))`,
-        rockGradient: `linear-gradient(to right, hsl(349, 71%, 52%), hsl(349, 70%, 56%))`,
+        scissorsColorDark: `hsl(39, 89%, 49%)`,
+        scissorsColor: `hsl(40, 84%, 53%)`,
+        paperColorDark: `hsl(230, 89%, 62%)`,
+        paperColor: `hsl(230, 89%, 65%)`,
+        rockColorDark: `hsl(349, 71%, 52%)`,
+        rockColor: `hsl(349, 70%, 56%)`,
         cyan: `hsl(189, 59%, 53%)`,
 
         // Neutral
